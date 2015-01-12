@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get "omniauth_callbacks/facebook"
   get "omniauth_callbacks/vkontakte"
 
+# Страницы главного меню
+  get "/index.html", to: "static_pages#index"
   get 'static_pages/index'
   get 'static_pages/about'
-  get 'static_pages/contacts'
+  get "/contacts.html", to: "static_pages#contacts"
 
 end
