@@ -1,0 +1,81 @@
+  <head>
+    <!-- Custom styles for this template -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+  </head>
+
+  <!-- Navbar
+  ============= -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index.html">ННТЭ</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="<%=is_active('about')%>"><a href="/about.html">О компании</a></li>
+            <li class="<%=is_active('blog')%>"><a href="/blog.html">Новости</a></li>
+            <li class="dropdown">
+              <a href="/services.html" class="dropdown-toggle" data-toggle="dropdown">Потребителям <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/prices.html">Цены и тарифы</a></li>
+		<li><a href="/podklucheniya.html">Возможности подключения</a></li>
+                <li><a href="#">Информация о задолженности</a></li>
+              </ul>
+            </li>
+
+          
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Раскрытие информации <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/teplo.html">Теплоснабжение</a></li>
+                <li><a href="/gvs.html">Горячее водоснабжение</a></li>
+                <li><a href="/blanks.html">Бланки договоров и контрактов</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/services.html" class="dropdown-toggle" data-toggle="dropdown">Закупки <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/polozhenie.html">Положение о закупках</a></li>
+                <li><a href="/plan.html">План закупок</a></li>
+                <li><a href="/today.html">Текущие закупки</a></li>
+                <li><a href="/arhive.htl">Архив закупок</a></li>
+                <li><a href="/dogovora.html">Заключённые договоры</a></li>
+              </ul>
+            </li>
+            <li class="<%=is_active('contact')%>"><a href="/contact.html">Контакты</a></li>
+
+          <% if current_user %>
+            <li style="padding-left: 120px;" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="account">
+                  <div class="avatar">
+                    <% if current_user.avatar? %>
+                      <%= image_tag current_user.avatar_url, :width => 100 %>
+                    <% else %>
+                      <%= image_tag "/images/no-avatar.png", :width => 100 %>
+                    <% end %>
+                  </div>
+                  <p><b><%= current_user.name %></b><br /><%= current_user.email %></p>
+                  <p><a href="/users/profile">Аккаунт</a> | <%= link_to "Выйти", "/users/sign_out" %></p>
+                  <div class="clearfix"></div>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li style="text-align: right; padding-left: 120px;"><a href="/users/sign_in">Войти</a></li>
+          <% end %>
+
+      <!-- Profile links for extra small screens -->
+          </ul>
+      <!-- Search form for extra small screens -->
+        </div>
+      </div>
+    </div>
